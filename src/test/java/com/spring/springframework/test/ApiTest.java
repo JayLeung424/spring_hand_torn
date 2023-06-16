@@ -1,7 +1,8 @@
 package com.spring.springframework.test;
 
-import com.spring.springframework.BeanDefinition;
-import com.spring.springframework.BeanFactory;
+import com.spring.springframework.beans.factory.config.BeanDefinition;
+import com.spring.springframework.beans.factory.BeanFactory;
+import com.spring.springframework.beans.factory.support.DefaultListableBeanFactory;
 import com.spring.springframework.test.bean.UserService;
 import org.junit.Test;
 
@@ -15,14 +16,15 @@ public class ApiTest {
     @Test
     public void testBeanFactory() {
         // 1.初始化 BeanFactory
-        BeanFactory beanFactory = new BeanFactory();
-
-        // 2.注入bean
-        BeanDefinition beanDefinition = new BeanDefinition(new UserService());
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        // 2.注册 bean
+        BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
-
-        // 3.获取bean
+        // 3.第一次获取bean
         UserService userService = (UserService) beanFactory.getBean("userService");
         userService.queryUserInfo();
+        // 4.第二次获取bean from Singleton
+        UserService userServiceSingle = (UserService) beanFactory.getBean("userService");
+        userServiceSingle.queryUserInfo();
     }
 }
