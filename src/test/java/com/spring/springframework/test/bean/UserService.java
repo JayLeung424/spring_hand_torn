@@ -1,10 +1,14 @@
 package com.spring.springframework.test.bean;
 
 /**
- * @ClassName: UserServiceTest
- * @Description:
+ * @ClassName: UserService
+ * @Description: 简单的 UserService对象，方便我们后续对 Spring 容器测试
  * @Author: jay
- * @Date: 2023/6/16 16:28
  **/
 public class UserService {
+
+    public void queryUserInfo(){
+        System.out.println("查询用户信息");
+    }
+
 }

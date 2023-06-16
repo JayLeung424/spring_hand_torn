@@ -1,45 +1,21 @@
-package com.jay.spring;
+package com.spring.springframework;
 
 /**
  * @ClassName: BeanDefinition
- * @Description: bean定义  -- 定义bean的会有的属性
+ * @Description: Bean定义  -- 定义Bean的会有的属性
  * @Author: jay
  **/
 public class BeanDefinition {
     /**
-     * bean的类型
+     * Bean 对象
      */
-    private Class clazz;
-    /**
-     * scope类型
-     */
-    private String scope;
-    /**
-     * 是不是懒加载
-     */
-    private boolean isLazy;
+    private Object bean;
 
-    public Class getClazz() {
-        return clazz;
+    public BeanDefinition(Object bean) {
+        this.bean = bean;
     }
 
-    public void setClazz(Class clazz) {
-        this.clazz = clazz;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
-
-    public boolean isLazy() {
-        return isLazy;
-    }
-
-    public void setLazy(boolean lazy) {
-        isLazy = lazy;
+    public Object getBean() {
+        return bean;
     }
 }

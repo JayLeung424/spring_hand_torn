@@ -1,45 +1,36 @@
 package com.spring.springframework;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
- * @ClassName: BeanDefinition
- * @Description: bean定义  -- 定义bean的会有的属性
+ * @ClassName: BeanFactory
+ * @Description: Bean 对象的工厂,可以存放 Bean 定义到 Map 中以及获取。
  * @Author: jay
  **/
-public class BeanDefinition {
+public class BeanFactory {
     /**
-     * bean的类型
+     * 存放 Bean 定义的 Map
      */
-    private Class clazz;
+    private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
+
     /**
-     * scope类型
+     * 获取 Bean
+     *
+     * @param name
+     * @return
      */
-    private String scope;
+    public Object getBean(String name) {
+        return beanDefinitionMap.get(name).getBean();
+    }
+
     /**
-     * 是不是懒加载
+     * 注册 Bean 定义
+     *
+     * @param name           Bean 名称
+     * @param beanDefinition Bean 定义
      */
-    private boolean isLazy;
-
-    public Class getClazz() {
-        return clazz;
-    }
-
-    public void setClazz(Class clazz) {
-        this.clazz = clazz;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
-
-    public boolean isLazy() {
-        return isLazy;
-    }
-
-    public void setLazy(boolean lazy) {
-        isLazy = lazy;
+    public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
+        beanDefinitionMap.put(name, beanDefinition);
     }
 }
