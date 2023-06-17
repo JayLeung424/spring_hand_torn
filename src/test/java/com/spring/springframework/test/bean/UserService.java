@@ -6,25 +6,28 @@ package com.spring.springframework.test.bean;
  * @Author: jay
  **/
 public class UserService {
-    private String name;
-    //
-    // public UserService() {
-    // }
 
-    public UserService(String name) {
-        this.name = name;
-    }
+    private String userId;
+
+    private UserDao userDao;
 
     public void queryUserInfo() {
-        System.out.println("查询用户信息:" + name);
+        System.out.println("查询用户信息：" + userDao.queryUserName(userId));
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("");
-        sb.append("").append(name);
-        return sb.toString();
+    public String getUserId() {
+        return userId;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 }
