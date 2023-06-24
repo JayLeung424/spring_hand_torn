@@ -1,4 +1,4 @@
-package com.spring.springframework.beans.factory;
+package com.spring.springframework.beans;
 
 /**
  * @ClassName: PropertyValue

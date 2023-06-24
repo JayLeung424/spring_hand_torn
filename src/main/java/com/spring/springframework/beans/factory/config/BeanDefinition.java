@@ -1,6 +1,6 @@
 package com.spring.springframework.beans.factory.config;
 
-import com.spring.springframework.beans.factory.PropertyValues;
+import com.spring.springframework.beans.PropertyValues;
 
 /**
  * @ClassName: BeanDefinition
@@ -22,12 +22,12 @@ public class BeanDefinition {
 
 
     public BeanDefinition(Class beanClass) {
-        this.beanClass = beanClass;
+        this(beanClass, null);
     }
 
     public BeanDefinition(Class beanClass, PropertyValues propertyValues) {
         this.beanClass = beanClass;
-        this.propertyValues = propertyValues;
+        this.propertyValues = propertyValues != null ? propertyValues : new PropertyValues();
     }
 
     public Class getBeanClass() {
