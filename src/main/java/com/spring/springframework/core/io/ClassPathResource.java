@@ -31,6 +31,7 @@ public class ClassPathResource implements Resource {
     /**
      * 获取输入流
      * 用于通过 ClassLoader 读取ClassPath 下的文件信息
+     *
      * @return
      * @throws Exception
      */

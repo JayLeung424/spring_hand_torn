@@ -11,7 +11,7 @@ import java.io.InputStream;
  * 指定文件路径的方式读取文件信息
  * @Author: jay
  **/
-public class FileSystemResource implements Resource{
+public class FileSystemResource implements Resource {
     private final String path;
 
     private final File file;
@@ -28,7 +28,7 @@ public class FileSystemResource implements Resource{
 
 
     @Override
-    public InputStream getInputStream() throws IOException{
+    public InputStream getInputStream() throws IOException {
         return new FileInputStream(this.file);
     }
 

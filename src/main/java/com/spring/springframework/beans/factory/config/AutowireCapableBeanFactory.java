@@ -5,5 +5,5 @@ package com.spring.springframework.beans.factory.config;
  * @Description:
  * @Author: jay
  **/
-public class AutowireCapableBeanFactory {
+public interface AutowireCapableBeanFactory {
 }

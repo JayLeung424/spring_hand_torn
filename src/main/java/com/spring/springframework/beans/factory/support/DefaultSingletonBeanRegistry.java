@@ -12,7 +12,7 @@ import java.util.Map;
  **/
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
-    private Map<String,Object> singletonObjects = new HashMap<>();
+    private Map<String, Object> singletonObjects = new HashMap<>();
 
 
     @Override
@@ -26,7 +26,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
      * @param beanName
      * @param singletonObject
      */
-    protected void addSingleton(String beanName,Object singletonObject){
-        singletonObjects.put(beanName,singletonObject);
+    protected void addSingleton(String beanName, Object singletonObject) {
+        singletonObjects.put(beanName, singletonObject);
     }
 }

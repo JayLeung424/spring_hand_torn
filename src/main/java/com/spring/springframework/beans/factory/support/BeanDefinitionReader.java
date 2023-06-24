@@ -19,12 +19,14 @@ public interface BeanDefinitionReader {
 
     /**
      * 获取资源加载器
+     *
      * @return
      */
     ResourceLoader getResourceLoader();
 
     /**
      * 加载Bean定义
+     *
      * @param resource
      * @throws BeansException
      */
@@ -32,6 +34,7 @@ public interface BeanDefinitionReader {
 
     /**
      * 加载Bean定义
+     *
      * @param resources
      * @throws BeansException
      */
@@ -39,6 +42,7 @@ public interface BeanDefinitionReader {
 
     /**
      * 加载Bean定义
+     *
      * @param location
      * @throws BeansException
      */

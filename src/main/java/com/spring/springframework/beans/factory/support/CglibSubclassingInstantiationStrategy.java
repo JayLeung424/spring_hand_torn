@@ -12,7 +12,7 @@ import java.lang.reflect.Constructor;
  * @Description: cglib 实例化策略
  * @Author: jay
  **/
-public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy{
+public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy {
     @Override
     public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
         Enhancer enhancer = new Enhancer();

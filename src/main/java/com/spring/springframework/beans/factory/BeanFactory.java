@@ -24,11 +24,11 @@ public interface BeanFactory {
      * step2->step3 : Bean对象初始化支持有参构造函数
      *
      * @param beanName Bean名称
-     * @param args 构造函数参数
+     * @param args     构造函数参数
      * @return Bean对象
      * @throws BeansException
      */
-    Object getBean(String beanName,Object... args) throws BeansException;
+    Object getBean(String beanName, Object... args) throws BeansException;
 
 
 }
