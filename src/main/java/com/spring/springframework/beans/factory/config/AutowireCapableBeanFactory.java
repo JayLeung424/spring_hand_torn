@@ -1,6 +1,7 @@
 package com.spring.springframework.beans.factory.config;
 
 import com.spring.springframework.beans.BeansException;
+import com.spring.springframework.beans.factory.BeanFactory;
 
 /**
  * @ClassName: AutowireCapableBeanFactory
@@ -11,7 +12,7 @@ import com.spring.springframework.beans.BeansException;
  * existing bean instances.
  * @Author: jay
  **/
-public interface AutowireCapableBeanFactory {
+public interface AutowireCapableBeanFactory extends BeanFactory {
 
     /**
      * 执行 BeanPostProcessors 接口实现类的 postProcessBeforeInitialization 方法
