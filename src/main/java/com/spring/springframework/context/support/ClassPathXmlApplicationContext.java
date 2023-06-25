@@ -4,9 +4,8 @@ import com.spring.springframework.beans.BeansException;
 
 /**
  * @ClassName: ClassPathXmlApplicationContext
- * @Description:
+ * @Description: 从类路径下的一个或多个xml配置文件中加载上下文定义
  * @Author: jay
- * @Date: 2023/6/25 16:19
  **/
 public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContext {
 

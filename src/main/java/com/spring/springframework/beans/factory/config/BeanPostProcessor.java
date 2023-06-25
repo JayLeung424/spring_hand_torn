@@ -4,7 +4,7 @@ import com.spring.springframework.beans.BeansException;
 
 /**
  * @ClassName: BeanPostProcessor
- * @Description: Bean处理器
+ * @Description: 在Bean之后处理器
  * @Author: jay
  **/
 public interface BeanPostProcessor {

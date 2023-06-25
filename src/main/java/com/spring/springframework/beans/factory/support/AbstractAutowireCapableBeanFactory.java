@@ -41,9 +41,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     /**
      * bean的实例化
      *
-     * @param beanDefinition
-     * @param beanName
-     * @param args
+     * @param beanDefinition bean的定义
+     * @param beanName       bean的名称
+     * @param args           参数
      * @return
      */
     private Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {

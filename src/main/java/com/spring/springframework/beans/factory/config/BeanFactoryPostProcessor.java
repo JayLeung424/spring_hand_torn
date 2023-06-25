@@ -5,7 +5,7 @@ import com.spring.springframework.beans.factory.ConfigurableListableBeanFactory;
 
 /**
  * @ClassName: BeanFactoryPostProcessor
- * @Description: Bean工厂处理器
+ * @Description: 在BeanFactory之后的处理器
  * @Author: jay
  **/
 public interface BeanFactoryPostProcessor {
