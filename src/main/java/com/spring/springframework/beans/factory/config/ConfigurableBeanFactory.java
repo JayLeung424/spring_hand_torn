@@ -13,4 +13,11 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
     String SCOPE_PROTOTYPE = "prototype";
 
+    /**
+     * 添加 BeanPostProcessor
+     *
+     * @param beanPostProcessor
+     */
+    void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
+
 }
