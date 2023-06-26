@@ -1,7 +1,6 @@
 package com.spring.springframework.beans.factory.support;
 
 import com.spring.springframework.beans.BeansException;
-import com.spring.springframework.beans.factory.ConfigurableListableBeanFactory;
 import com.spring.springframework.beans.factory.config.BeanDefinition;
 
 import java.util.HashMap;
@@ -15,14 +14,9 @@ import java.util.Map;
  * 对 BeanDefinition容器、单例容器两个核心容器的操作权限
  * @Author: jay
  **/
-public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableListableBeanFactory {
+public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
 
-    private final Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
-
-    @Override
-    public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
-        beanDefinitionMap.put(beanName, beanDefinition);
-    }
+    private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
     @Override
     public BeanDefinition getBeanDefinition(String beanName) throws BeansException {
@@ -39,25 +33,12 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
-    public <T> Map<String, T> getBeansOfType(Class<T> requiredType) throws BeansException {
-        Map<String, T> result = new HashMap<>();
-        beanDefinitionMap.forEach((beanName, beanDefinition) -> {
-            Class beanClass = beanDefinition.getBeanClass();
-            if (requiredType.isAssignableFrom(beanClass)) {
-                result.put(beanName, (T) getBean(beanName));
-            }
-        });
-        return result;
-    }
-
-    @Override
     public String[] getBeanDefinitionNames() {
         return beanDefinitionMap.keySet().toArray(new String[0]);
     }
 
     @Override
-    public void preInstantiateSingletons() throws BeansException {
-        beanDefinitionMap.keySet().forEach(this::getBean);
+    public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
+        beanDefinitionMap.put(beanName, beanDefinition);
     }
-
 }

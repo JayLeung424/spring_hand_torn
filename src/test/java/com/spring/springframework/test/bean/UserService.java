@@ -10,11 +10,9 @@ public class UserService {
     private String userId;
 
     private UserDao userDao;
-    private String company;
-    private String location;
 
     public String queryUserInfo() {
-        return userDao.queryUserName(userId) + "," + company + "," + location;
+        return userDao.queryUserName(userId);
     }
 
     public String getUserId() {
@@ -31,21 +29,5 @@ public class UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 }
