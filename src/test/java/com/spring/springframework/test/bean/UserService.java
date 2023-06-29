@@ -1,11 +1,14 @@
 package com.spring.springframework.test.bean;
 
+import com.spring.springframework.beans.factory.DisposableBean;
+import com.spring.springframework.beans.factory.InitializingBean;
+
 /**
  * @ClassName: UserService
  * @Description: 简单的 UserService对象，方便我们后续对 Spring 容器测试
  * @Author: jay
  **/
-public class UserService {
+public class UserService implements InitializingBean, DisposableBean {
 
     private String userId;
 
@@ -16,6 +19,17 @@ public class UserService {
     public String queryUserInfo() {
         return userDao.queryUserName(userId) + "," + company + "," + location;
     }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("执行：UserService.destroy");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("执行：UserService.afterPropertiesSet");
+    }
+
 
     public String getUserId() {
         return userId;
