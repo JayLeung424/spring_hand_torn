@@ -5,8 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.spring.springframework.beans.BeansException;
 import com.spring.springframework.beans.PropertyValue;
 import com.spring.springframework.beans.PropertyValues;
-import com.spring.springframework.beans.factory.DisposableBean;
-import com.spring.springframework.beans.factory.InitializingBean;
+import com.spring.springframework.beans.factory.*;
 import com.spring.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import com.spring.springframework.beans.factory.config.BeanDefinition;
 import com.spring.springframework.beans.factory.config.BeanPostProcessor;
@@ -130,6 +129,18 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
      * @return
      */
     private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) throws Exception {
+        // invokeAwareMethods
+        if (bean instanceof Aware) {
+            if (bean instanceof BeanFactoryAware) {
+                ((BeanFactoryAware) bean).setBeanFactory(this);
+            }
+            if (bean instanceof BeanClassLoaderAware){
+                ((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());
+            }
+            if (bean instanceof BeanNameAware) {
+                ((BeanNameAware) bean).setBeanName(beanName);
+            }
+        }
         // 1. 执行 BeanPostProcessor Before 处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
@@ -158,7 +169,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             ((InitializingBean) bean).afterPropertiesSet();
         }
 
-        // 2. 配置信息 init-method {判断是为了避免二次执行销毁}
+        // 2. 配置信息 init-method {判断是为了避免二次执行初始化}
         String initMethodName = beanDefinition.getInitMethodName();
         if (StrUtil.isNotEmpty(initMethodName)) {
             Method initMethod = beanDefinition.getBeanClass().getMethod(initMethodName);
