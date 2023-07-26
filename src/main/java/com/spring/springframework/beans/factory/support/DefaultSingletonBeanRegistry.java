@@ -5,6 +5,7 @@ import com.spring.springframework.beans.factory.DisposableBean;
 import com.spring.springframework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,9 +16,15 @@ import java.util.Set;
  **/
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
+    /**
+     * Internal marker for a null singleton object:
+     * used as marker value for concurrent Maps (which don't support null values).
+     */
+    protected static final Object NULL_OBJECT = new Object();
+
     private Map<String, Object> singletonObjects = new HashMap<>();
 
-    private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
+    private final Map<String, DisposableBean> disposableBeans = new LinkedHashMap<>();
 
     @Override
     public Object getSingleton(String beanName) {
@@ -34,7 +41,6 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         disposableBeans.put(beanName, bean);
     }
 
-    @Override
     public void destroySingletons() {
         Set<String> keySet = this.disposableBeans.keySet();
         Object[] disposableBeanNames = keySet.toArray();
